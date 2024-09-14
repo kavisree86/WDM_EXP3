@@ -39,20 +39,37 @@ for each wear category.</p>
 ### Program:
 
 ```python
+
 from collections import defaultdict
 from itertools import combinations
 # Function to generate candidate k-item sequences
 def generate_candidates(dataset, k):
+    candidates = defaultdict(int)
+    for comb in combination(seq,k):
+          candidates[comb]+=1
+return {item: support for item ,support in candidates.items() if support >=min_support}
 
+     
 
-    /WRITE YOUR CODE HERE/
+    
 
 
 #Function to perform GSP algorithm
 def gsp(dataset, min_support):
+    frequent_patterns=defaultdict(int)
+     k=1
+    sequences=dataset
+    while True:
+        candidates=genreate_candidates(sequences,k)
+        if not candidates:
+             break
+         frequent_patterns.update(candidates)
+         k+=1
+    return frequent_patterns
+   
 
 
-  /WRITE YOUR CODE HERE/
+
 
 
 #Example dataset for each category
@@ -102,6 +119,8 @@ else:
  print("No frequent sequential patterns found in Party Wear.")
 ```
 ### Output:
+![Screenshot 2024-09-14 133250](https://github.com/user-attachments/assets/b0e664fd-548d-447b-9f11-5d0fd434d17f)
+
 
 ### Visualization:
 ```python
@@ -130,6 +149,9 @@ visualize_patterns_line(bottom_wear_result, 'Bottom Wear')
 visualize_patterns_line(party_wear_result, 'Party Wear')
 ```
 ### Output:
+![Screenshot 2024-09-14 134338](https://github.com/user-attachments/assets/fcec5a5e-a743-4bb9-a4f2-df23dbb0f25e)
+![Screenshot 2024-09-14 134406](https://github.com/user-attachments/assets/dfddcf23-97ee-4030-b3b5-74c1c047b650)
 
 
 ### Result:
+GSP Algorithm In Python is Implemented
